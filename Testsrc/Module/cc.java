@@ -721,7 +721,7 @@ public class cc {
                             Thread.sleep(4000);
 
                             Runtime.getRuntime().exec("Auto3script/Submit.exe");
-                            Thread.sleep(4000);
+                            Thread.sleep(5000);
                             Result="pass";
                             //applicantp.clickProposalsubmisstion();
                         //   driver.switchTo().parentFrame();

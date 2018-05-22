@@ -1,7 +1,5 @@
 package Module;
-
 import Pages.Applicantp;
-import com.sun.xml.internal.stream.util.ThreadLocalBufferAllocator;
 import jxl.Workbook;
 import jxl.format.CellFormat;
 import jxl.read.biff.BiffException;
@@ -16,7 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 
 import java.awt.event.KeyEvent;
@@ -24,9 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 //import static TestScript.ForgotCTest.WinHandleBefore1;
 import static Utilites.AttachFunction.AttachFuntn;
@@ -38,14 +35,14 @@ import static Utilites.OpenBrowser.GetUrl;
 import static Utilites.OpenBrowser.openBrowser;
 import static Utilites.ReconDate.RecDateFun;
 import static Utilites.Windowhander.NewWindow;
-import static Utilites.visitdate.SiteVisitDateFun;
 import static jxl.format.Colour.*;
 import static jxl.format.Colour.LIGHT_TURQUOISE;
 
 /**
- * Created by akshay.pokley on 5/8/2018.
+ * Created by akshay.pokley on 4/27/2018.
  */
-public class ScrutinyApprove {
+public class CCImprov {
+
     static WebDriver driver;
     public Label l4;
     public static WritableCellFormat cellFormat;
@@ -79,7 +76,7 @@ public class ScrutinyApprove {
     static final java.util.regex.Pattern Alphnu = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
     static final java.util.regex.Pattern Flot = java.util.regex.Pattern.compile("^[+-]?([0-9]*[.])?[0-9]++$");
     public static Applicantp applicantp;//
-    // public static ApplicantMenu applicantMenu;
+   // public static ApplicantMenu applicantMenu;
     public static String subWindowHandler = null;
     public static String Actvalue;
     public static int x=3;
@@ -88,12 +85,13 @@ public class ScrutinyApprove {
     public static int k1;
     public static int rr=1;
     public static int Rec=2;
+
     @BeforeTest
     public  void OutputExcelCreation() throws IOException, BiffException, WriteException {
 
-        sourceDocument = Workbook.getWorkbook(new File("ExcelData/InputData/ScrutinyTestData.xls"));
+        sourceDocument = Workbook.getWorkbook(new File("ExcelData/InputData/ApplicantTestDatapratic.xls"));
         writableTempSource = Workbook.createWorkbook(new File("ExcelData/InputData/temp.xls"), sourceDocument);
-        copyDocument = Workbook.createWorkbook(new File("ExcelData/TestReport/ScrutinytTestReport.xls"));
+        copyDocument = Workbook.createWorkbook(new File("ExcelData/TestReport/ApplicantTestReport.xls"));
         sourceSheet = writableTempSource.getSheet(0);
         targetSheet = copyDocument.createSheet("sheet 1", 2);
 
@@ -176,7 +174,7 @@ public class ScrutinyApprove {
                 targetSheet.setColumnView(3, widthInChars2);
                 targetSheet.mergeCells(0, 0, 6, 0);
                 Label lable = new Label (0, 0,
-                        "Scrutiny screen test Result",cellFormat5);
+                        "Applicant screen test Result",cellFormat5);
                 targetSheet.addCell(lable);
                 targetSheet.addCell(l2);
                 targetSheet.addCell(l3);
@@ -237,28 +235,11 @@ public class ScrutinyApprove {
                     switch (objectName)
                     {
 
-                        case "Feesframe":
-                            try{
-
-                                 driver.switchTo().parentFrame();
-                                //   driver.switchTo().parentFrame();
-
-                                 driver.findElement(By.xpath(".//*[@id='liCreateFees']")).click();
-
-                                driver.switchTo().frame("IframeCreateFee");
-
-                            }catch (Throwable j)
-                            {
-                                Actual=j.getMessage();
-                                Result="fails";
-                            }
-
-
                         case "Documentframe":
                             try{
 
-                               // driver.switchTo().parentFrame();
-                             //   driver.switchTo().parentFrame();
+                                driver.switchTo().parentFrame();
+                                driver.switchTo().parentFrame();
 
                                 applicantp.clickDocumentdetails();
 
@@ -271,31 +252,16 @@ public class ScrutinyApprove {
                             }
 
                             break;
-                        case "Sitevisitframe":
-                            try{
 
-                               driver.switchTo().parentFrame();
-                                Thread.sleep(3000);
-                                applicantp.clickSitevistdetails();
-
-                                driver.switchTo().frame("IframeSiteInspection");
-
-                            }catch (Throwable j)
-                            {
-                                Actual=j.getMessage();
-                                Result="fails";
-                            }
-
-                            break;
 
                         case "Drawingframe":
                             try{
 
-                               //driver.switchTo().parentFrame();
+                                driver.switchTo().parentFrame();
                                 Thread.sleep(3000);
                                 applicantp.clickDrawingdetails();
 
-                              //  driver.switchTo().frame("ifrmDrawings");
+                                driver.switchTo().frame("ifrmDrawings");
 
                             }catch (Throwable j)
                             {
@@ -307,7 +273,7 @@ public class ScrutinyApprove {
                         case "Plotframe":
                             try{
 
-                                // driver.switchTo().parentFrame();
+                               // driver.switchTo().parentFrame();
                                 // driver.switchTo().parentFrame();
 
                                 applicantp.ClickPlotdetails();
@@ -324,10 +290,16 @@ public class ScrutinyApprove {
 
                         case "Buildingframe":
                             try{
+                                Thread.sleep(1000);
+                                //driver.switchTo().frame("IframeAddProposal");
+
+                                Thread.sleep(1000);
 
                                 // driver.switchTo().parentFrame();
                                 // driver.switchTo().parentFrame();
                                 applicantp.clickBuilding_Details();
+
+                                Thread.sleep(1000);
                                 driver.switchTo().frame("ifrmBuildingDetails");
 
                             }catch (Throwable j)
@@ -577,11 +549,6 @@ public class ScrutinyApprove {
                             LogFunction(driver);
                             Result="pass";
                             break;
-
-                        case "Scrutiny":
-                            ScrutinyFunction(driver);
-                            Result="pass";
-                            break;
                         /*case "Payment":
                             MIDCPA_LogFunction(driver);              Result="pass";
                             break;
@@ -618,8 +585,8 @@ public class ScrutinyApprove {
                                             Thread.sleep(6000);
                                             AttachFuntn(driver, "E:\\Akshay\\Select-02.pdf");
                                             Thread.sleep(700);
-                                            //  driver.switchTo().window(WinHandleBefore1);
-                                            //  driver.switchTo().window(WinHandleBefore1);
+                                          //  driver.switchTo().window(WinHandleBefore1);
+                                          //  driver.switchTo().window(WinHandleBefore1);
 
                                             break;
                                             /* // hit enter*/
@@ -752,274 +719,29 @@ public class ScrutinyApprove {
 
                 case "CLICK":
                     String FilePath = "E:\\Akshay\\PWIMS Deployment.pdf";
-                    String FilePath2 = "E:\\Akshay\\VMC\\dd (4).dwg";
+                    String FilePath2 = "C:\\Users\\akshay.pokley\\Desktop\\hh\\HILESH KHERNAR (2).dwg";
                     String WinHandleBefore1 = driver.getWindowHandle();
                     switch (objectName) {
 /************************************************************************************************/
-                        case"Approval":
-                            Thread.sleep(1000);
-
-                            Runtime.getRuntime().exec("Auto3script/Approval.exe");
-
-                            Thread.sleep(61000);
-                           /* applicantp.clickGeneateFn();
-                            List<WebElement> l2is=driver.findElements(By.xpath("./*//*[@id='UlAction']/li/a"));
-
-                            for(WebElement s:l2is)
-                            {
-                                String g=s.getText();
-                                if(g.equals(value)) {
-                                    s.click();
-                                }}*/
-Result="pass";
-
-                          break;
-
-                        case"Create Fess":
-                            Thread.sleep(1000);
-                            driver.findElement(By.xpath(".//*[@id='aFeeCreate']")).click();
-                            Thread.sleep(2000);
-                            driver.findElement(By.xpath(".//*[@id='btnSave']")).click();
-                            Thread.sleep(1000);
-                            if ((ExpectedConditions.alertIsPresent()) == null) {
-
-                            } else {
-                                Alert alert = driver.switchTo().alert();
-
-                                Actual = driver.switchTo().alert().getText();
-                                Thread.sleep(300);
-                                alert.accept();
-
-                            }
-                            Thread.sleep(3000);
-                            Runtime.getRuntime().exec("Auto3script/fessok.exe");
-                            Thread.sleep(5000);
-                            driver.switchTo().parentFrame();
-                            Thread.sleep(5000);
-                            Result="pass";
-                            break;
-                        case"Plan sitevist":
-                            Thread.sleep(3500);
-
-                            driver.findElement(By.xpath(".//*[@id='btnPlanVisit']")).click();
-                            Thread.sleep(200);
-                            NewWindow(driver);
-                            SiteVisitDateFun(driver, "19/7/2019");
-                            Result="pass";
-                        driver.findElement(By.xpath(".//*[@id='btnSave']")).click();
-                            Thread.sleep(2000);
-                            if ((ExpectedConditions.alertIsPresent()) == null) {
-
-                            } else {
-                                Alert alert = driver.switchTo().alert();
-                                 Thread.sleep(300);
-                                alert.accept();
-                            }
-
-                        //  *//**//*  Thread.sleep(1000);
-       //                     Runtime.getRuntime().exec("Auto3script/closedsitevisit.exe");
-//
-                        //    Thread.sleep(160000);
-                            Result="pass";
-                          break;
-                        case"CC Letter":
-
-                            driver.findElement(By.xpath(".//*[@id='btnReport']")).click();
-
-                                List<WebElement> liwws=driver.findElements(By.xpath(".//*[@id='UlReport']/li/a"));
-
-                                for(WebElement s:liwws) {
-                                    String g = s.getText();
-                                    if (g.equals(value)) {
-                                        s.click();
-                                        break;
-                                    }
-                                }
-                            Result="pass";
-                          break;
-
-                          case"Genrate File No":
-                              try{
-                               //   driver.switchTo().parentFrame();
-                                  Thread.sleep(1500);
-                                  applicantp.clickGeneateFn();
-                             List<WebElement> lis=driver.findElements(By.xpath(".//*[@id='UlAction']/li/a"));
-
-                             for(WebElement s:lis)
-                             {
-                                 String g=s.getText();
-                                 if(g.equals(value))
-                                 {
-                                     s.click();
-                                     Thread.sleep(1000);
-                                     if ((ExpectedConditions.alertIsPresent()) == null) {
-                                     } else {
-                                         Alert alert = driver.switchTo().alert();
-                                         Actual = alert.getText();
-                                         alert.accept();
-                                     }
-                                 }
-                             }
-
-                                  if ((ExpectedConditions.alertIsPresent()) == null) {
-                                  } else {
-                                      Alert alert = driver.switchTo().alert();
-                                      Actual = alert.getText();
-                                      alert.accept();
-                                  }
-                                  Result = "pass";
-
-                              }catch (Throwable h)
-                              {Result="fails";
-                                  Actual=h.getMessage();
-                              }
-                            Result="pass";
-                            break;
-
-                        case"Save Scrutiny details":
-                            driver.switchTo().frame("iFrmDrawing2");
-
-                                    Thread.sleep(2300);
-                            Actions actions23 = new Actions(driver);
-                            actions23.moveToElement(driver.findElement(By.xpath(".//*[@id='TGDrawingScrunity']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr[2]/td[9]")));
-                            Thread.sleep(1000);
-                            actions23.click();
-                            actions23.build().perform();
-
-                            Thread.sleep(1000);
-                            List< WebElement> element222 = driver.findElements(By.xpath("//div[@class='GLMenuMain GLEnumMenuMain']/div/div/div/div/div"));
-
-                            for(WebElement Hss:element222)
-                            {
-                                String Hs=Hss.getText();
-                                if(Hs.equals(value))
-                                {
-                                    Hss.click();
-
-                                    WebElement Select =driver.findElement(By.xpath("./*//*[@id='ddlMasterRecommendation']"));
-                                    Thread.sleep(1000);
-                                    Select combo=new Select(Select);
-                                    combo.selectByVisibleText("Suggested Recommended");
-                                    Thread.sleep(1000);
-                                    driver.findElement(By.xpath("./*//*[@id='txtMasterRemarks']")).sendKeys("OK");
-                                    Thread.sleep(1000);
-                                    driver.findElement(By.xpath("./*//*[@id='btnSave']")).click();
-                                    Thread.sleep(2310);
-                                    driver.findElement(By.xpath("//html/body/form/div//table/tbody/tr[1]/td[2]/table/tbody/tr/td[3]/ul/li/a")).click();
-                                    Result="pass";
-                                    break;
-                                }
-                            }
-
-                            Result="pass";
-                            break;
-
-                        case"Scrutiny Process":
-                            Runtime.getRuntime().exec("Auto3script/ScrutinyProcess.exe");
-                            Thread.sleep(710000);
-
-                           // driver.manage().timeouts().implicitlyWait(960,TimeUnit.SECONDS);
-
-                          /*  Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                                    .withTimeout(2646, TimeUnit.SECONDS)
-                                    .pollingEvery(2646, TimeUnit.SECONDS)
-                                    .ignoring(NoSuchElementException.class);*/
-
-                            if ((ExpectedConditions.alertIsPresent()) == null) {
-                                System.out.println("alert was not present");
-                            } else {
-                                Alert alert = driver.switchTo().alert();
-                                Actual = driver.switchTo().alert().getText();
-                                alert.accept();
-                            }
-
-
-                            Result="pass";
-                            break;
-                        case"Save sitevist":
-                            Thread.sleep(3000);
-                            applicantp.clickSitevistdetails();
-                            Thread.sleep(1000);
-                            driver.switchTo().frame("IframeSiteInspection");
-                            Thread.sleep(1000);
-                            List<WebElement> vd=driver.findElements(By.xpath(".//*[@id='SiteVisitChecklistGrid']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr/td[6]/nobr[2]"));
-
-                            for(WebElement h:vd)
-                            {
-
-                                h.click();
-
-                            }
-                            WebElement Selec2t =driver.findElement(By.xpath(".//*[@id='ddlApproveRecommendation']"));
-
-                            Select combo2=new Select(Selec2t);
-                            combo2.selectByVisibleText("Recommended");
-                            Thread.sleep(1000);
-                            driver.findElement(By.xpath(".//*[@id='txtSiteVisitRemarks']")).sendKeys("done");
-                            Thread.sleep(1000);
-                            driver.findElement(By.xpath(".//*[@id='btnSave']")).click();
-                            Thread.sleep(1000);
-                            driver.findElement(By.xpath("//html/body/form/div/table/tbody/tr[1]/td[2]/table/tbody/tr/td[3]/ul/li/a")).click();
-                            driver.findElement(By.xpath(".//*[@id='Img']")).click();
-
-                            Thread.sleep(1000);
-                            BeforeWH(driver);
-                            Thread.sleep(1000);
-                            driver.findElement(By.xpath(".//*[@id='btnAttached']")).click();
-                            Thread.sleep(1000);
-                            BeforeWH(driver);
-                            WebElement ss5 = driver.findElement(By.id("RadAsyncUpload1file0"));
-                            ss5.click();
-                            Thread.sleep(1000);
-                            AttachFuntn(driver, "E:\\Akshay\\SELENIUM\\Chrysanthemum.jpg");
-                            Thread.sleep(1000);
-                            Runtime.getRuntime().exec("Auto3script/SubPhoto.exe");
-
-                            driver.switchTo().window(WinHandleBefore1);
-                            Thread.sleep(3000);
-
-
-                            Result="pass";
-
-                          break;
-
-                        case"Submit Sitvisit":
-
-                            Thread.sleep(3000);
-                            applicantp.clickSitevistdetails();
-                            Thread.sleep(1000);
-                            driver.switchTo().frame("IframeSiteInspection");
-                         driver.findElement(By.xpath("./*//*[@id='btnSubmit']")).click();
-                            Thread.sleep(1000);
-                            if ((ExpectedConditions.alertIsPresent()) == null) {
-
-                            } else {
-                                Alert alert = driver.switchTo().alert();
-
-                                //  Actual = driver.switchTo().alert().getText();
-                                Thread.sleep(1000);
-                                alert.accept();
-                            }
-
-                            Thread.sleep(1000);
-                            driver.findElement(By.xpath("//html/body/form/div/table/tbody/tr[1]/td[2]/table/tbody/tr/td[3]/ul/li/a")).click();
-                            Thread.sleep(1000);
-                            driver.switchTo().parentFrame();
-                            Thread.sleep(1000);
-                            Result="pass";
-                            //applicantp.clickProposalsubmisstion();
-                            //   driver.switchTo().parentFrame();
-                            break;
-
                         case"Submit proposal":
-                            Thread.sleep(3500);
 
-                            Runtime.getRuntime().exec("Auto3script/Submit.exe");
+
+                            driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+                            driver.findElement(By.xpath(".//*[@id='Button3']")).click();
+
+                            driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+
+
+                            Thread.sleep(2000);
+
+                            driver.findElement(By.xpath("//div[@class='rwDialogPopup radconfirm']/div/a[1]/span/span")).click();
+
+                            // Runtime.getRuntime().exec("Auto3script/Submit.exe");
+                            Thread.sleep(5000);
                             Result="pass";
                             //applicantp.clickProposalsubmisstion();
-                            //   driver.switchTo().parentFrame();
+                        //   driver.switchTo().parentFrame();
                             break;
-
 
                         case"Save Plot Details":
                             applicantp.ClickSavePlot_Details();
@@ -1027,17 +749,17 @@ Result="pass";
                             break;
 
                         case "save":
-                            applicantp.clickSave();
+                        applicantp.clickSave();
                             Thread.sleep(3000);
-                            WebElement frame = driver.findElement(By.xpath("//iframe[@frameborder='0']"));
-                            driver.switchTo().frame(frame);
-                            Thread.sleep(3000);
-                            Runtime.getRuntime().exec("Auto3script/OK.exe");
+
+                            driver.findElement(By.xpath("//*[@class='rwPopupButton']/span")).click();
+
+                         //   Runtime.getRuntime().exec("Auto3script/OK.exe");
 
                             driver.switchTo().parentFrame();
                             Thread.sleep(3000);
-                            Result ="pass";
-                            break;
+                    Result ="pass";
+                    break;
 
                         case "Filter":
                             try
@@ -1072,7 +794,7 @@ Result="pass";
                                 applicantp.clickApply();
 
                                 applicantp.clickBP();
-                                //  driver.switchTo().frame("ifrmProjectInfo");
+                              //  driver.switchTo().frame("ifrmProjectInfo");
                                 driver.switchTo().frame("IframeAddProposal");
 
                                 applicantp.clickGenInfo();
@@ -1185,7 +907,15 @@ Result="pass";
 
 
 
+                        case "Double Height FSI":
 
+                            break;
+
+                        case "Drawing is PreDCR Converted OR Not":
+                            break;
+
+                        case "Add For Extra Floor Height":
+                            break;
 /*---------------------------------------------- Risk details --------------------------------------------------------*/
 
 
@@ -1252,27 +982,27 @@ Result="pass";
                                         Actual = s;
                                     }
                                 } else {*/
-                                driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-                                List<WebElement> cells = driver.findElements(By.xpath(".//*[@id='ListProposalGrid']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr/td[5]"));
+                                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                                    List<WebElement> cells = driver.findElements(By.xpath(".//*[@id='ListProposalGrid']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr/td[5]"));
 
-                                for (WebElement cell : cells) {
-                                    String fiels = cell.getText();
-                                    System.out.println(fiels);
+                                    for (WebElement cell : cells) {
+                                        String fiels = cell.getText();
+                                        System.out.println(fiels);
 
-                                    if (fiels.equals(value)) {
-                                        cell.click();
-                                     //   driver.switchTo().frame("IframeAddProposal");
-                                        Result = "pass";
-                                        break;
+                                        if (fiels.equals(value)) {
+                                            cell.click();
+                                            driver.switchTo().frame("IframeAddProposal");
+                                            Result = "pass";
+                                            break;
 
-                                    } else {
-                                        Result = "fails";
-                                        Actual = "File not Found";
+                                        } else {
+                                            Result = "fails";
+                                            Actual = "File not Found";
+                                        }
                                     }
-                                }
 
 
-                                // }
+                               // }
                             } catch (Throwable e) {
 
                                 Actual=e.getMessage();
@@ -1286,7 +1016,7 @@ Result="pass";
 
                             try{ driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
                                 applicantp.clickBuilding_Details();
-                                driver.switchTo().frame("ifrmBuildingDetails");
+driver.switchTo().frame("ifrmBuildingDetails");
                                 Result="pass";
                             }catch (Throwable g)
                             {
@@ -1310,7 +1040,7 @@ Result="pass";
 
 
                                 driver.switchTo().parentFrame();
-                                //  driver.switchTo().frame("ifrmListing");
+                              //  driver.switchTo().frame("ifrmListing");
                                 Result="pass";
                             }catch (Throwable g)
                             {
@@ -1350,6 +1080,11 @@ Result="pass";
                                     Thread.sleep(1000);
                                     driver.switchTo().window(WinHandleBefore1);
                                     Thread.sleep(1000);
+                                    driver.switchTo().frame("ifrmListing");
+
+                                    Thread.sleep(1000);
+                                    driver.switchTo().frame("ifrmDrawings");
+                                    System.out.println("pass");
                                    /* if ((ExpectedConditions.alertIsPresent()) == null) {
 
                                     } else {
@@ -1364,9 +1099,12 @@ Result="pass";
 
                                     }*/
                                     Thread.sleep(3000);
-                                    //driver.findElement(By.xpath("html/body/form/div/table/tbody/tr[1]/td[2]/table/tbody/tr/td[3]/ul/li/a")).click();
-                                    Runtime.getRuntime().exec("Auto3script/ok5.exe");
-                                    driver.switchTo().parentFrame();
+                                    driver.findElement(By.xpath("//*[@class='rwPopupButton']/span")).click();
+                                    Thread.sleep(3000);
+                                //   Runtime.getRuntime().exec("Auto3script/ok5.exe");
+                                    Thread.sleep(1000);
+                                   driver.switchTo().parentFrame();
+                                    Thread.sleep(1000);
 
                                 } else {
                                     driver.findElement(By.id("btnAttached")).click();
@@ -1381,7 +1119,7 @@ Result="pass";
                                         Thread.sleep(01);
                                     }
 
-                                    driver.switchTo().parentFrame();
+                                   // driver.switchTo().parentFrame();
                                 }
 
                             }catch (Throwable d)
@@ -1444,8 +1182,8 @@ Result="pass";
                             Result="pass";
                             break;
 
-                        case "Verify medatory doc":
-                            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                        case "Attch medatory doc":
+                            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
                             try {
                                 List<WebElement> cells = driver.findElements(By.xpath(".//*[@id='RadTabStrip1']/div/ul/li/a/span/span"));
@@ -1465,23 +1203,108 @@ Result="pass";
                                                     int g = 1 + k;
                                                     k = g;
                                                 }
-                                                    Thread.sleep(2000);
-                                                    WebElement s=driver.findElement(By.xpath(".//*[@id='btnSave1']"));
-                                                    String s1=s.getAttribute("value");
-                                                    System.out.println(s1);
-                                                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-                                                    if(s1.contentEquals("Verify Mandatory Documents")) {
-                                                        WebElement ty = driver.findElement(By.xpath(".//*[@id='ddlDocStatus" + k + "']"));
 
-                                                        Select combo=new Select(ty);
-                                                        combo.selectByVisibleText("Approve");
-                                                    }
-                                                    }
+                                                    Thread.sleep(5);
+                                                    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                                                    WebElement fiels3 = driver.findElement(By.xpath(".//*[@id='category_Doc" + k + "']/div/table/tbody/tr[2]/td[2]"));
+                                                    String d = fiels3.getText();
+                                                    System.out.println(d);
+                                                    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                                                    WebElement df = driver.findElement(By.xpath(".//*[@id='category_Doc" + k + "']/div/table/tbody/tr[2]/td[3]/a"));
+                                                    String y = df.getText();
+                                                    if (!y.equals("Attach Files")) {
+                                                        System.out.println("E");
+                                                    } else {
+                                                        try{
 
+                                                            df.click();
+                                                            System.out.println(k);
+                                                            Thread.sleep(1000);
+
+                                                            WebElement frame22 = driver.findElement(By.xpath("//iframe[@frameborder='0']"));
+                                                            driver.switchTo().frame(frame22);
+                                                            Thread.sleep(1000);
+                                                            driver.findElement(By.xpath("//html/body/form/table/tbody/tr[3]/td/table/tbody/tr[2]/td/input")).click();
+                                                            BeforeWH(driver);
+                                                            WebElement ss = driver.findElement(By.id("RadAsyncUpload1file0"));
+                                                            ss.click();
+                                                            Thread.sleep(1000);
+
+                                                            AttachFuntn(driver, FilePath);
+                                                            System.out.println(driver.switchTo().window(WinHandleBefore1));
+                                                            driver.switchTo().frame("ifrmListing");
+
+                                                            Thread.sleep(1000);
+                                                            driver.switchTo().frame("ifrmDocuments");
+                                                            System.out.println("pass");
+
+                                                            driver.findElement(By.xpath(".//*/table/tbody/tr[1]/td[2]/table/tbody/tr/td[3]/ul/li/a/span")).click();
+                                                            Thread.sleep(1000);
+                                                            System.out.println(k);
+
+                                                        }catch (Throwable w){
+                                                            System.out.println(w.getMessage());
+                                                        }
+
+
+                                                    }
+                                                Thread.sleep(1000);
 
                                                 Result = "pass";
                                             }
                                             System.out.println("proposal");
+                                        } /*else {
+                                            System.out.println("Fire");
+                                            for (int l = 35; l < 52; l++) {
+
+                                                if (l == 39) {
+                                                    int r = 12 + l;
+                                                    l = r;
+                                                } else {
+
+                                                }
+
+                                                try {
+                                                    Thread.sleep(1000);
+                                                    driver.manage().timeouts().implicitlyWait(15l, TimeUnit.SECONDS);
+                                                    WebElement fiels3 = driver.findElement(By.xpath("./*//*[@id='category_Doc" + l + "']/div/table/tbody/tr[2]/td[2]"));
+                                                    String d = fiels3.getText();
+                                                    System.out.println(d);
+                                                    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+                                                    WebElement ty = driver.findElement(By.xpath("./*//*[@id='category_Doc" + l + "']/div/table/tbody/tr[2]/td[3]/a"));
+                                                    String h = ty.getText();
+                                                    System.out.println(l);
+                                                    if (!h.equals("Attach Files")) {
+                                                    } else {
+                                                        ty.click();
+                                                        driver.manage().timeouts().implicitlyWait(16, TimeUnit.SECONDS);
+
+                                                        driver.switchTo().frame("RadWindowContentFrameRadWindowManager2_RadPopupWindow");
+                                                        driver.findElement(By.xpath("//html/body/form/table/tbody/tr[3]/td/table/tbody/tr[2]/td/input")).click();
+                                                        BeforeWH(driver);
+                                                        WebElement ss = driver.findElement(By.id("RadAsyncUpload1file0"));
+                                                        ss.click();
+                                                        Thread.sleep(1000);
+                                                        AttachFuntn(driver, FilePath);
+                                                        System.out.println(driver.switchTo().window(WinHandleBefore1));
+                                                        driver.switchTo().frame("ifrmListing");
+                                                        driver.switchTo().frame("ifrmDocuments");
+                                                        System.out.println("pass");
+                                                        driver.findElement(By.xpath("html/body/span/table/tbody/tr[1]/td[2]/table/tbody/tr/td[3]/img")).click();
+
+                                                    }
+
+
+                                                } catch (Throwable d) {
+
+                                                    Actual=d.getMessage();
+                                                    Result="fails";
+                                                }
+
+                                            }
+
+                                        }*/
 
                                     } else {
                                         System.out.println("NoCC");
@@ -1494,49 +1317,6 @@ Result="pass";
                                 Result = "pass";}
 
                             // driver.switchTo().parentFrame();
-                            break;
-
-                        case "Document Submission":
-                            try{
-
-                                driver.findElement(By.xpath(".//*[@id='btnSave1']")).click();
-
-                                Thread.sleep(3655);
-
-//                                WebElement frame2 = driver.findElement(By.xpath("//iframe[@frameborder='0']"));
-//                                driver.switchTo().frame(frame2);
-
-                                driver.findElement(By.xpath("//html/body/form/div/table/tbody/tr/td[2]/table/tbody/tr/td[3]/ul/li/a")).click();
-
-                                Result="pass";
-                            }catch (Throwable d)
-                            {Actual=d.getMessage();
-                                Result="fail";}
-                            break;
-
-                        case "Document Recomendation Submission":
-                            try{
-
-
-                                WebElement Select =driver.findElement(By.xpath(".//*[@id='ddlApproveRecommendation']"));
-
-                                Select combo=new Select(Select);
-                                combo.selectByVisibleText(value);
-
-                                driver.findElement(By.xpath(".//*[@id='txtDocumentRemarks']")).sendKeys("OK");
-Thread.sleep(3000);
-                                driver.findElement(By.xpath(".//*[@id='btnSave']")).click();
-
-                               /* WebElement frame2 = driver.findElement(By.xpath("//iframe[@frameborder='0']"));
-                                driver.switchTo().frame(frame2);*/
-
-                                driver.findElement(By.xpath("//html/body/form/div/table/tbody/tr/td[2]/table/tbody/tr/td[3]/ul/li/a")).click();
-                                Thread.sleep(3000);
-
-                                Result="pass";
-                            }catch (Throwable d)
-                            {Actual=d.getMessage();
-                                Result="fail";}
                             break;
 
                         case "Attach Additional Document":
@@ -2011,7 +1791,7 @@ Thread.sleep(3000);
                             try {
                                 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                                 Actions actions = new Actions(driver);
-                                actions.moveToElement(applicantp.getBuilding_Use());
+                               actions.moveToElement(applicantp.getBuilding_Use());
                                 actions.click();
                                 actions.build().perform();
                                 Thread.sleep(1000);
@@ -2066,10 +1846,10 @@ Thread.sleep(3000);
 
                         case "Building Type":
 
-                            try {
+                           try {
                                 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                                 Actions action1 = new Actions(driver);
-                                action1.moveToElement(applicantp.getBuilding_Type());
+                           action1.moveToElement(applicantp.getBuilding_Type());
                                 action1.click();
 
                                 action1.build().perform();
@@ -2135,24 +1915,30 @@ Thread.sleep(3000);
 
                         case "Development Area":
                             applicantp.setDevelopment_Area(value);
-                            Result ="pass";
+                            Result = "pass";
                             break;
 
                         case "Land Use Zone":
                             Thread.sleep(3000);
                             applicantp.setLand_Use_Zone(value);
-                            Result ="pass";
+                            Result = "pass";
                             break;
                         case "Land Sub Use":
                             Thread.sleep(3000);
                             applicantp.setLand_Sub_Use(value);
-                            Result ="pass";
+                            Result = "pass";
                             break;
                         case "Plot Use":
                             applicantp.setPlot_Use(value);
-                            Result ="pass";
+                            Result = "pass";
                             break;
                         case "Plot Sub Use":
+                            try {  applicantp.setPlot_Sub_Use(value);
+                                Result ="pass";
+                            } catch (Throwable h)
+                            {
+
+                }
                             applicantp.setPlot_Sub_Use(value);
                             Result ="pass";
                             break;
@@ -3044,7 +2830,7 @@ Thread.sleep(3000);
                         case "Building Name":
 
                             try{driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-                                // driver.switchTo().frame("ifrmBuildingDetails");
+                               // driver.switchTo().frame("ifrmBuildingDetails");
                                 System.out.println("find");
                                 Actions actions = new Actions(driver);
                                 actions.moveToElement(applicantp.getBuilding_Name());
@@ -3066,7 +2852,7 @@ Thread.sleep(3000);
                             try{
                                 System.out.println("find");
                                 Actions actions2 = new Actions(driver);
-                                //         actions2.moveToElement(application.getBuilding_Rows());
+                       //         actions2.moveToElement(application.getBuilding_Rows());
                                 actions2.click();
                                 actions2.click();
                                 actions2.sendKeys(value);
@@ -3132,7 +2918,7 @@ Thread.sleep(3000);
                             try{
                                 System.out.println("find");
                                 Actions actions4 = new Actions(driver);
-                                actions4.moveToElement(applicantp.getBuilding_Floors());
+                            actions4.moveToElement(applicantp.getBuilding_Floors());
                                 actions4.click();
                                 actions4.click();
                                 actions4.sendKeys(value);
@@ -3184,7 +2970,7 @@ Thread.sleep(3000);
     @DataProvider(name = "hybridData")
     public Object[][] getDataFromDataprovider() throws IOException {
         Object[][] object = null;
-        FileInputStream fis = new FileInputStream("ExcelData/InputData/ScrutinyTestData.xls");
+        FileInputStream fis = new FileInputStream("ExcelData/InputData/ApplicantTestDatapratic.xls");
         HSSFWorkbook wb = new HSSFWorkbook(fis);
         HSSFSheet sh = wb.getSheet("Applicant");
         //  HSSFRow rows = sh.getRow(1);
@@ -3210,6 +2996,8 @@ Thread.sleep(3000);
 
 
     }
+
+
 
 
 

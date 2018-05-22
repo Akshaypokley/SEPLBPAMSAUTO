@@ -4,58 +4,58 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="360.752">
+           time="420.987">
   <properties />
   
   
-            <testcase name="ApplicationTest" time="0.154" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.199" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="31.126" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.495" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.474" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="12.848" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.180" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="3.904" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.423" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.140" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="152.452" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.284" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.893" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="6.572" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="2.202" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="1.563" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.192" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="4.642" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="7.752" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="8.440" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="8.828" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="2.207" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.093" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="15.476" classname="Module.cc" />
+            <testcase name="ApplicationTest" time="0.199" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.222" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="31.580" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.567" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.644" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="13.016" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.254" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="3.821" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.547" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.247" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="156.012" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.335" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.442" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="6.360" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="2.226" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="1.777" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.251" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="3.749" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="13.686" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="9.008" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="9.312" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="2.227" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.100" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="15.435" classname="Module.cc" />
                 <testcase name="ApplicationTest" time="0.000" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="3.438" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="1.569" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.279" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="5.182" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="2.825" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="7.427" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="2.190" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="1.663" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="2.192" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.204" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.427" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="4.698" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="18.311" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="16.637" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.334" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="3.190" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.395" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="2.196" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.280" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.812" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.144" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="15.393" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="9.274" classname="Module.cc" />
-                <testcase name="ApplicationTest" time="0.153" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="3.765" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="1.742" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.361" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="5.203" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="29.007" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="28.584" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="2.221" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="2.059" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="2.235" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.231" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.503" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="4.804" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="18.365" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="16.792" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.402" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="3.236" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.409" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="2.249" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.366" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.846" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.182" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="15.451" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="9.790" classname="Module.cc" />
+                <testcase name="ApplicationTest" time="0.167" classname="Module.cc" />
       
 </testsuite>
