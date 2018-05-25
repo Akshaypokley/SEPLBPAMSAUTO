@@ -7,8 +7,8 @@
     </listeners>
     <test name="Regression" >
         <classes>
-             <class name="Module.cc"></class>
-            <class name="Module.ScrutinyApprove"></class>
+             <class name="Module.CCImprov"></class>
+            <class name="Module.ScrutinyApproveprtic"></class>
  </classes>
     </test>
 
