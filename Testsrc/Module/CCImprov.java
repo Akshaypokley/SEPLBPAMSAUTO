@@ -203,7 +203,7 @@ public class CCImprov {
 
         if (testcaseName != null && testcaseName.length() != 0) {
 
-            driver = openBrowser("chrome");
+            driver = openBrowser("Firefox");
             GetUrl("url");
             Thread.sleep(200);
             SetBord = j++;
@@ -223,7 +223,7 @@ public class CCImprov {
                     switch (objectName)
                     {
                         case "Closed":
-                            Thread.sleep(1000);
+                            Thread.sleep(2000);
                             driver.quit();
                             Thread.sleep(1000);
                             Result="pass";
@@ -726,7 +726,7 @@ public class CCImprov {
                         case"Submit proposal":
 
 
-                            driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+                            driver.manage().timeouts().implicitlyWait(35,TimeUnit.SECONDS);
                             driver.findElement(By.xpath(".//*[@id='Button3']")).click();
 
                             driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
@@ -750,8 +750,8 @@ public class CCImprov {
 
                         case "save":
                         applicantp.clickSave();
-                            Thread.sleep(3000);
-
+                            Thread.sleep(4000);
+driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
                             driver.findElement(By.xpath("//*[@class='rwPopupButton']/span")).click();
 
                          //   Runtime.getRuntime().exec("Auto3script/OK.exe");
@@ -1099,6 +1099,7 @@ driver.switchTo().frame("ifrmBuildingDetails");
 
                                     }*/
                                     Thread.sleep(3000);
+                                    driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
                                     driver.findElement(By.xpath("//*[@class='rwPopupButton']/span")).click();
                                     Thread.sleep(3000);
                                 //   Runtime.getRuntime().exec("Auto3script/ok5.exe");

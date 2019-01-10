@@ -51,8 +51,10 @@ public class OpenBrowser {
     {
 /*     driver.get("http://192.168.1.209:6002/bpamsclient/default.aspx");*/
         //driver.get("http://192.168.1.209:8085/bpamsclient/Default.aspx");
-       // driver.get("http://192.168.1.34:8086/BPAMSClient/Default.aspx");
-        driver.get("http://localhost:8089/BPAMSClient/Default.aspx");
+    //   driver.get("http://192.168.1.2:8059/BPAMSClient/Default.aspx");
+       // driver.get("http://localhost:8089/BPAMSClient/Default.aspx");
+
+        driver.get("http://192.168.4.194:8085/BPAMSClient/Default.aspx");
 
 }
 }

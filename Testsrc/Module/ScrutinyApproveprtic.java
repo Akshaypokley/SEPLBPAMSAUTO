@@ -1003,7 +1003,7 @@ Result="pass";
 
                         case"Scrutiny Process":
                             Runtime.getRuntime().exec("Auto3script/ScrutinyProcess.exe");
-                            Thread.sleep(710000);
+                            Thread.sleep(730000);
 
                            // driver.manage().timeouts().implicitlyWait(960,TimeUnit.SECONDS);
 
